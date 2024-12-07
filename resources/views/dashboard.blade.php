@@ -11,8 +11,8 @@
 
             <!-- Dashboard Content -->
             @if (auth()->user() && auth()->user()->hasRole('admin'))
-                <x-dashboard-admin :reports="$reports" :jumlahPengaduan="$jumlahPengaduan" :sedangDiproses="$sedangDiproses" :selesai="$selesai"
-                    :jumlahMasyarakat="$jumlahMasyarakat" :jumlahPetugas="$jumlahPetugas" />
+                <x-dashboard-admin :reports="$reports" :jumlahPengaduan="$jumlahPengaduan" :belumDiproses="$belumDiproses" :sedangDiproses="$sedangDiproses"
+                    :selesai="$selesai" :ditolak="$ditolak" :jumlahMasyarakat="$jumlahMasyarakat" :jumlahPetugas="$jumlahPetugas" />
             @else
                 <x-detail-pengaduan-user :reports="$reports" />
             @endif

@@ -104,9 +104,11 @@ class UserController extends Controller
     {
         $jumlahPengaduan = Report::count();
 
+        $belumDiproses = Report::where('status', 'Belum Diproses')->count();
         $sedangDiproses = Report::where('status', 'Sedang Diproses')->count();
 
         $selesai = Report::where('status', 'Selesai')->count();
+        $ditolak = Report::where('status', 'ditolak')->count();
 
         $jumlahMasyarakat = User::where('level', 'user')->count();
 
@@ -119,6 +121,6 @@ class UserController extends Controller
             $userId = Auth::id();
             $reports = Report::where('user_id', $userId)->paginate(7);
         }
-        return view('dashboard', compact('level', 'reports', 'jumlahPengaduan', 'sedangDiproses', 'selesai', 'jumlahMasyarakat', 'jumlahPetugas'));
+        return view('dashboard', compact('level', 'reports', 'belumDiproses', 'ditolak', 'jumlahPengaduan', 'sedangDiproses', 'selesai', 'jumlahMasyarakat', 'jumlahPetugas'));
     }
 }
